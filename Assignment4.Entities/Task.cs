@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using Assignment4.Core;
 
@@ -13,7 +14,7 @@ namespace Assignment4.Entities
 
         [Required] 
         public State State { get; set;}
-        public Tag Tags { get; set;}
+        public List<Tag> Tags { get; set;}
 
     }
 }

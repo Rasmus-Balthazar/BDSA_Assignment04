@@ -5,17 +5,17 @@ namespace Assignment4.Entities
 {
     public class User
     {
-        int Id { get; set;}
+        public int Id { get; set;}
 
         [Required]
         [StringLength(100)]
-        string Name { get; set;}
+        public string Name { get; set;}
 
         [EmailAddress]
         [Required]
         [StringLength(100)]
-        string Email { get; set;}
-        List<Task> Tasks { get; set;}
+        public string Email { get; set;}
+        public List<Task> Tasks { get; set;}
         
     }
 }
