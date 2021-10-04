@@ -10,7 +10,7 @@ namespace Assignment4.Entities
         [Required]
         [StringLength(100)]
         string Name { get; set;}
-        
+
         [EmailAddress]
         [Required]
         [StringLength(100)]
