@@ -16,6 +16,16 @@ namespace Assignment4.Entities
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder
+                .Entity<User>()
+                .HasIndex(u => u.Email)
+                .IsUnique();
+
+            modelBuilder
+                .Entity<Tag>()
+                .HasIndex(t => t.tasks)
+                .IsUnique();
+
+            modelBuilder
                 .Entity<Task>()
                 .Property(e => e.State)
                 .HasConversion(new EnumToStringConverter<State>());

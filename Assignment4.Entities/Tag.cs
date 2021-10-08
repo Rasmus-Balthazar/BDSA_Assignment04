@@ -11,6 +11,6 @@ namespace Assignment4.Entities
         [Required]
         [StringLength(50)]
         public string Name { get; set;}
-        public List<Task> tasks { get; set;}
+        public List<Task> tasks { get; set;} = new List<Task>();
     }
 }

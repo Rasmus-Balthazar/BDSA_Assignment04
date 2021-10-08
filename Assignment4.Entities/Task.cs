@@ -14,7 +14,7 @@ namespace Assignment4.Entities
 
         [Required] 
         public State State { get; set;}
-        public List<Tag> Tags { get; set;}
+        public List<Tag> Tags { get; set;} = new List<Tag>();
 
     }
 }
