@@ -11,9 +11,7 @@ namespace Assignment4.Entities
         public DbSet<Task> Tasks { get; set;}
         public DbSet<User> Users { get; set;}
 
-         protected override void OnConfiguring(DbContextOptionsBuilder options)
-            => options.UseNpgsql("Host=localhost;Username=postgres;Password=Kaffe123;Database=BDSA_Assignment4");
-    
+         public KanbanContext(DbContextOptions options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
