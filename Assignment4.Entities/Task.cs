@@ -6,7 +6,7 @@ namespace Assignment4.Entities
 {
     public class Task
     {
-        public int? Id { get; set;}
+        public int Id { get; set;}
         [StringLength(100)]
         public string title { get; set;}
         public User AssignedTo { get; set;}
@@ -14,7 +14,7 @@ namespace Assignment4.Entities
 
         [Required] 
         public State State { get; set;}
-        public List<Tag> Tags { get; set;}
+        public List<Tag> Tags { get; set;} = new List<Tag>();
 
     }
 }
