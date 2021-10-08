@@ -31,7 +31,7 @@ namespace Assignment4.Entities.Tests
         [Fact]
         public void firstTest()
         {
-            var tr = new TaskRepository();
+            var tr = new TaskRepository(kc);
 
             var t1 = new Task{title = "search"};
             var t2 = new Task{title = "filter"};

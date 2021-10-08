@@ -8,9 +8,15 @@ namespace Assignment4.Entities
 {
     public class TaskRepository : ITaskRepository
     {
+        private readonly IKanbanContext context;
+        public TaskRepository(IKanbanContext context)
+        {
+            this.context = context;
+        }
+
         public IReadOnlyCollection<TaskDTO> All()
         {
-            using var kc = new KanbanContext();
+            var kc = context;
             var tasks = kc.Tasks.Select( t => t);
 
             var result = new List<TaskDTO>();
@@ -19,10 +25,9 @@ namespace Assignment4.Entities
                 result.Add(new TaskDTO{
                     Id = task.Id,
                     Title = task.title,
-                    Description = task.Description,
-                    AssignedToId = task.AssignedTo != null ? task.AssignedTo.Id : null,
-                    State = task.State,
+                    AssignedToName = task.AssignedTo != null ? task.AssignedTo.Name : null,
                     Tags = task.Tags == null ? null : task.Tags.Select(t => t.Name).ToList()
+                    State = task.State,
                 });
             }
             return result;
