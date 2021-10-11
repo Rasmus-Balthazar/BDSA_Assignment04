@@ -10,7 +10,7 @@ namespace Assignment4
 {
     public class KanbanContextFactory : IDesignTimeDbContextFactory<KanbanContext>
     {
-        public KanbanContext CreateDbContext(string[] args)
+        public KanbanContext CreateDbContext()
         {
             var configuration = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
@@ -24,6 +24,16 @@ namespace Assignment4
                 .UseSqlServer(connectionString);
 
             return new KanbanContext(optionsBuilder.Options);
+        }
+
+        public KanbanContext CreateDbContext(string[] args)
+        {
+            return CreateDbContext();
+        }
+
+        public static void Seed(KanbanContext context)
+        {
+
         }
     }
 }
