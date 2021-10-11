@@ -65,16 +65,18 @@ namespace Assignment4.Entities
 
         public Response Update(UserUpdateDTO user)
         {
-            var newUser = new User{Id = user.Id, Name = user.Name, Email = user.Email};
-            // try
-            // {
-                context.Users.Update(newUser);
-            // }
-            // catch (Exception e)
-            // {
-            //     return Conflict;
-            // }
-            context.SaveChanges();
+            try
+            {
+                var oldUser = context.Users.Find(user.Id);
+                oldUser.Name = user.Name ?? oldUser.Name;
+                oldUser.Email = user.Email ?? oldUser.Email;
+                context.Users.Update(oldUser);
+                context.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                return Conflict;
+            }
             return Updated;
         }
     }
