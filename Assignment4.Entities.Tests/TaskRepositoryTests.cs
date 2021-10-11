@@ -14,12 +14,21 @@ namespace Assignment4.Entities.Tests
         private readonly KanbanContext kc;
         public TaskRepositoryTests()
         {
+            
             using var connection = new SqliteConnection("Filename=:memory:");
             connection.Open();
             var builder = new DbContextOptionsBuilder<KanbanContext>();
             builder.UseSqlite(connection);
             using var context = new KanbanContext(builder.Options);
             context.Database.EnsureCreated();
+            
+            
+            
+            
+
+
+
+            context.SaveChanges();
             this.kc = context;
         }
 
@@ -28,21 +37,21 @@ namespace Assignment4.Entities.Tests
             throw new NotImplementedException();
         }
 
-        [Fact]
-        public void firstTest()
-        {
-            var tr = new TaskRepository(kc);
+        // [Fact]
+        // public void firstTest()
+        // {
+        //     var tr = new TaskRepository(kc);
 
-            var t1 = new Task{title = "search"};
-            var t2 = new Task{title = "filter"};
+        //     var t1 = new Task{title = "search"};
+        //     var t2 = new Task{title = "filter"};
 
-            kc.Tasks.Add(t1);
-            kc.Tasks.Add(t2);
+        //     kc.Tasks.Add(t1);
+        //     kc.Tasks.Add(t2);
 
-            kc.SaveChanges();
+        //     kc.SaveChanges();
 
-            var actual = tr.All();
-            Assert.Equal(2, actual.Count());
-        }
+        //     var actual = tr.ReadAll();
+        //     Assert.Equal(2, actual.Count());
+        // }
     }
 }
