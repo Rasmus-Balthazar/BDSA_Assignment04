@@ -22,7 +22,7 @@ namespace Assignment4.Entities
 
             modelBuilder
                 .Entity<Tag>()
-                .HasIndex(t => t.tasks)
+                .HasIndex(t => t.Name)
                 .IsUnique();
 
             modelBuilder
