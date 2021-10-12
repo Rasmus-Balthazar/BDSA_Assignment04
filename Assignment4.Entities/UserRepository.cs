@@ -75,6 +75,7 @@ namespace Assignment4.Entities
             }
             catch (Exception e)
             {
+                System.Console.WriteLine(e.Message);
                 return Conflict;
             }
             return Updated;

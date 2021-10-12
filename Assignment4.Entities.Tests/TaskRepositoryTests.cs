@@ -12,6 +12,7 @@ namespace Assignment4.Entities.Tests
     public class TaskRepositoryTests : IDisposable
     {
         private readonly KanbanContext kc;
+        private readonly TaskRepository tr;
         public TaskRepositoryTests()
         {
             
@@ -29,7 +30,8 @@ namespace Assignment4.Entities.Tests
 
 
             context.SaveChanges();
-            this.kc = context;
+            kc = context;
+            tr = new TaskRepository(kc);
         }
 
         public void Dispose()
