@@ -30,7 +30,7 @@ namespace Assignment4.Entities
                 .Property(e => e.State)
                 .HasConversion(new EnumToStringConverter<State>());
             //Data seeding for testing, and seeding proper databases
-            var rasmus = new User { Id = 1, Name = "Rasmus", Email = "rasm@itu.dk",  Tasks = new List<Task>{}};
+            /* var rasmus = new User { Id = 1, Name = "Rasmus", Email = "rasm@itu.dk",  Tasks = new List<Task>{}};
             var bente = new User { Id = 2, Name = "Bente", Email = "bent@itu.dk", Tasks = new List<Task>{}};
             var tommy = new User { Id = 3, Name = "Tommy", Email = "tomm", Tasks = new List<Task>{}};
             modelBuilder
@@ -57,7 +57,7 @@ namespace Assignment4.Entities
                     backflip,
                     surf,
                     bdsa
-                );
+                ); */
         }
     }
 }

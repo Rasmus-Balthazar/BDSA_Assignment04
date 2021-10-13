@@ -5,10 +5,10 @@ namespace Assignment4.Entities
 {
     public class TagRepository : ITagRepository
     {
-        private readonly IKanbanContext context;
-        public TagRepository(IKanbanContext context)
+        private readonly IKanbanContext kanbanContext;
+        public TagRepository(IKanbanContext kc)
         {
-            this.context = context;
+            kanbanContext = kc;
         }
         public (Response Response, int TagId) Create(TagCreateDTO tag)
         {
