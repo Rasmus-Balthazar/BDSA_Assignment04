@@ -24,22 +24,22 @@ namespace Assignment4.Entities.Tests
             using var context = new KanbanContext(builder.Options);
             context.Database.EnsureCreated();
             
-            this.kc = context;
+            kc = context;
             tagRepository = new TagRepository(kc);
 
         }
 
-        public void Create_returns_responseAndId()
-        {
-            var tag = new TagCreateDTO()
-            {
-                Name = "WIP"
-            };
-            var (response, id) = tagRepository.Create(tag);
-            var actual = new TagDTO(1, "WIP");
-            Assert.Equal(actual.Id, id);
-            Assert.Equal(Response.Created, response);
-        }
+        // public void Create_returns_responseAndId()
+        // {
+        //     var tag = new TagCreateDTO()
+        //     {
+        //         Name = "WIP"
+        //     };
+        //     var (response, id) = tagRepository.Create(tag);
+        //     var actual = new TagDTO(1, "WIP");
+        //     Assert.Equal(actual.Id, id);
+        //     Assert.Equal(Response.Created, response);
+        // }
 
         public void Dispose()
         {

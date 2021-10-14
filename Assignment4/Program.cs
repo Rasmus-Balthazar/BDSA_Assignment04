@@ -8,8 +8,7 @@ namespace Assignment4
     {
         static void Main(string[] args)
         {
-            using var context = new KanbanContextFactory().CreateDbContext();
-            
+            using var context = new KanbanContextFactory().CreateDbContext();          
         }
     }
 }

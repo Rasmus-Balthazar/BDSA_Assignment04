@@ -16,8 +16,16 @@ namespace Assignment4.Entities
         public (Response Response, int UserId) Create(UserCreateDTO user)
         {
             var person = new User {Name = user.Name, Email = user.Email};
-            context.Users.Add(person);
-            context.SaveChanges();
+            try
+            {
+                context.Users.Add(person);
+                context.SaveChanges();
+            }
+            catch(Exception e)
+            {
+                System.Console.WriteLine(e.Message);
+                return (Conflict, -1);
+            }
             return (Created, person.Id);
         }
 
@@ -26,9 +34,16 @@ namespace Assignment4.Entities
             var user = context.Users.Find(userId);
             if (user != null)
             {
-                context.Users.Remove(user);
-                context.SaveChanges();
-                return(Deleted);
+                if(context.Tasks.Any(t => t.AssignedTo != user) || force == true)
+                {
+                    context.Users.Remove(user);
+                    context.SaveChanges();
+                    return(Deleted);
+                }
+                else
+                {
+                    return Conflict;
+                }
             }
             return(NotFound);
         }
@@ -68,6 +83,8 @@ namespace Assignment4.Entities
             try
             {
                 var oldUser = context.Users.Find(user.Id);
+                if (oldUser == null) return NotFound;
+                
                 oldUser.Name = user.Name ?? oldUser.Name;
                 oldUser.Email = user.Email ?? oldUser.Email;
                 context.Users.Update(oldUser);

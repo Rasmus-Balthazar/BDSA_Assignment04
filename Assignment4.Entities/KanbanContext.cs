@@ -2,6 +2,7 @@ using Assignment4.Core;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using System.Collections.Generic;
+using Microsoft.Data.Sqlite;
 
 namespace Assignment4.Entities
 {
@@ -11,7 +12,7 @@ namespace Assignment4.Entities
         public DbSet<Task> Tasks { get; set; }
         public DbSet<User> Users { get; set; }
 
-        public KanbanContext(DbContextOptions options) : base(options) { }
+        public KanbanContext(DbContextOptions<KanbanContext> options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
